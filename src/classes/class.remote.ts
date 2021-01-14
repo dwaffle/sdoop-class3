@@ -1,4 +1,5 @@
 import { Room } from "./class.room";
+import { Signal } from "./class.signal";
 
 export class Remote {
 
@@ -45,16 +46,8 @@ class Button {
 class InfraredDispatcher {
 
     dispatch( code:string ){
-        const signal = new Signal( code );
+        new Signal( code );
     }
 
 }
 
-class Signal {
-
-    constructor( code:string ){
-        console.log("Signal: ", code);
-        Room.items.push(this);
-    }
-
-}

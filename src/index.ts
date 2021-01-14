@@ -1,9 +1,12 @@
 import prompt from 'prompt';
 import { Room } from './classes/class.room';
 import { Remote } from './classes/class.remote';
+import { Television } from './classes/class.television';
 
 const remote = new Remote();
-Room.items.push(remote);
+const tv = new Television();
+Room.add(remote);
+Room.add(tv);
 
 prompt.start();
 
