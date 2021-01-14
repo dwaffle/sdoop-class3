@@ -1,5 +1,5 @@
 import { Room } from "./class.room";
-import {Signal} from "./class.signal"
+import { Signal } from "./class.signal";
 
 export class Remote {
 
@@ -46,7 +46,7 @@ class Button {
 class InfraredDispatcher {
 
     dispatch( code:string ){
-       new Signal( code );
+        new Signal( code );
     }
 
 }

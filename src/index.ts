@@ -1,12 +1,14 @@
 import prompt from 'prompt';
 import { Room } from './classes/class.room';
 import { Remote } from './classes/class.remote';
-import {Television} from './classes/class.television'
+import { Television } from './classes/class.television';
+import { Coax } from './classes/class.coax';
 
 const remote = new Remote();
-const TV = new Television();
+const coax = new Coax();
+const tv = new Television(coax);
 Room.add(remote);
-Room.add(TV)
+Room.add(tv);
 
 prompt.start();
 
