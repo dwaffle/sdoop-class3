@@ -1,4 +1,4 @@
-import { Room } from "./class.room";
+import {Room} from './class.room'
 
 export class Signal {
 
