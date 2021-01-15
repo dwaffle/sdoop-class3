@@ -21,8 +21,3 @@ export class Room {
         }
     }
 }
-
-//Have TV check items for Signals, then do something when a Signal is in there.
-//Does releasing the button empty the button's Signal from items, or should that be the job of the TV?
-//What happens if a button is pressed that the TV can't handle?
-//
