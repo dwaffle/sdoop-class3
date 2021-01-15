@@ -7,7 +7,7 @@ export class Remote {
     private dispatcher = new InfraredDispatcher();
 
     constructor(){
-        const buttons = ["1","2","3","4","5","6","7","8","9","0","Power","Channel Up","Channel Down","Volume Up","Volume Down"];
+        const buttons = ["1","2","3","4","5","6","7","8","9","0","Power","ChUp","ChDn","VUp","VDn"].map(btn => btn.toUpperCase());
         this.buttons = buttons.map( buttonLabel => new Button( buttonLabel, this ));
     }
 
@@ -30,6 +30,7 @@ class Button {
 
     press(){
         this.isPressed = true;
+        this.remote.handleButtonPress( this );
 
         this.interval = setInterval(() => {
             this.remote.handleButtonPress( this );
@@ -39,6 +40,11 @@ class Button {
     release(){
         this.isPressed = false;
         clearInterval(this.interval);
+    }
+
+    click(){
+        this.press();
+        this.release();
     }
 
 }
