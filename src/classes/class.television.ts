@@ -1,6 +1,7 @@
 import { Signal } from "./class.signal";
 import { Coax } from './class.coax'
 import {Log} from './class.log'
+import { timeStamp } from "console";
 
 export class Television {
     isOn = false;
@@ -80,6 +81,11 @@ export class Television {
     }
 
     addNumber(codeNumber:number){
+        this.timeout = setTimeout(() => {
+            this.channelBuilder[0] = 0
+            this.channelBuilder[1] = codeNumber
+            this.changeChannel()
+        }, 2000)
         this.channelBuilder.push(codeNumber)
         if(this.channelBuilder.length === 2){
             this.changeChannel()
