@@ -82,9 +82,11 @@ export class Television {
 
     addNumber(codeNumber:number){
         this.timeout = setTimeout(() => {
+            if(this.channelBuilder[0] && !this.channelBuilder[1]){
             this.channelBuilder[0] = 0
             this.channelBuilder[1] = codeNumber
             this.changeChannel()
+        }
         }, 2000)
         this.channelBuilder.push(codeNumber)
         if(this.channelBuilder.length === 2){
@@ -93,6 +95,7 @@ export class Television {
     }
 
     changeChannel(){
+        clearTimeout(this.timeout)
         this.channel = (this.channelBuilder[0] * 10) + (this.channelBuilder[1])
         this.channelBuilder = []
         
