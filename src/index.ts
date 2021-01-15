@@ -21,7 +21,7 @@ function listenForButtonInput(){
     }], (err:any, result:any) => {
         if(!err){
             
-            let interaction:string = "click";
+            let interaction = "click";
             switch(result.button[0]){
                 case ">": 
                     result.button = result.button.substr(1);

@@ -19,8 +19,8 @@ export class Remote {
 
 class Button {
 
-    material:string = "Rubber";
-    isPressed:boolean = false;
+    material = "Rubber";
+    isPressed = false;
 
     protected interval:any;
 
@@ -34,7 +34,7 @@ class Button {
 
         this.interval = setInterval(() => {
             this.remote.handleButtonPress( this );
-        }, 1000)
+        }, 2000)
     }
 
     release(){

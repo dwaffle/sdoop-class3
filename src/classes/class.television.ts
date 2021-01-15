@@ -1,5 +1,6 @@
 import { Signal } from "./class.signal";
 import { Coax } from './class.coax'
+import {Log} from './class.log'
 
 export class Television {
     isOn = false;
@@ -7,17 +8,23 @@ export class Television {
     channel = 1
     channelBuilder:number[] =[]
     protected interval:any
+    log = new Log;
+    timeout:any;
 
     constructor(public coax:Coax){
         coax.channels[this.channel]
-        setInterval(interval => console.log(this.coax.channels[this.channel]), 4000);
+        
+        setInterval(interval => {
+            
+        this.log.write(coax.channels[this.channel])
+        console.log(coax.channels[this.channel])
+        }, 1000);
     }
 
     recieveSignal( signal:Signal ){
         switch(signal.code){
             case "POWER":
                 this.isOn = !this.isOn
-                break;
             case "VUP":
                 this.volumeUp()
                 break;
@@ -32,6 +39,7 @@ export class Television {
                 break;
             default:
                 this.addNumber(Number(signal.code))
+                
                 break;
         }
 
@@ -43,14 +51,15 @@ export class Television {
             
             this.volume++;
         }
+        this.log.write("Volume is now " + this.volume)
         console.log("Volume is now " + this.volume)
     }
 
     volumeDown(){
         if(this.volume > 0){
-            
             this.volume--;
         }
+        this.log.write("Volume is now " + this.volume)
         console.log("Volume is now " + this.volume)
     }
 
@@ -80,5 +89,7 @@ export class Television {
     changeChannel(){
         this.channel = (this.channelBuilder[0] * 10) + (this.channelBuilder[1])
         this.channelBuilder = []
+        
+        this.log.write(this.coax.channels[this.channel])
     }
 }
